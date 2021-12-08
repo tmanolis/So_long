@@ -1,45 +1,50 @@
-#include <stdlib.h>
-#include "../mlx_linux/mlx.h"
-#include "so_long.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/08 15:00:04 by tmanolis          #+#    #+#             */
+/*   Updated: 2021/12/08 18:47:11 by tmanolis         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-# define WINDOW_WIDTH 600
-# define WINDOW_HEIGHT 300
+#include "so_long.h"
 
 // int main(void)
 // {
-// 	void	*mlx_ptr;
-// 	void	*win_ptr;
+// 	void	*mlx;
+// 	void	*win;
 
-// 	mlx_ptr = mlx_init();
-// 	win_ptr = mlx_new_window(mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "My first window!");
+// 	mlx = mlx_init();
+// 	win = mlx_new_window(mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "My first window!");
 // 	usleep(10000000);
-// 	mlx_destroy_window(mlx_ptr, win_ptr);
-// 	mlx_destroy_display(mlx_ptr);
-// 	free(mlx_ptr);
+// 	mlx_destroy_window(mlx, win);
+// 	mlx_destroy_display(mlx);
+// 	free(mlx);
 // }
 
-typedef struct	s_vars {
-	void	*mlx;
-	void	*win;
-}				t_vars;
 
-int	mlx_close(int keycode, t_vars *vars)
-{
-	printf("key press:%d\n", keycode);
-	if (keycode == 65307) //65307==echap
-	{
-		mlx_destroy_window(vars->mlx, vars->win);
-		exit(0);
-	}
-	return (1);
-}
+// int	mlx_close(int keycode, t_vars *vars)
+// {
+// 	printf("key press:%d\n", keycode);
+// 	if (keycode == 65307) // 65307==echap
+// 	{
+// 		mlx_destroy_window(vars->mlx, vars->win);
+// 		mlx_destroy_display(vars->mlx);
+// 		free(vars->mlx);
+// 		exit(0);
+// 	}
+// 	return (1);
+// }
 
-int	key_release(int keycode, t_vars *vars)
-{
-	printf("key release:%d\n", keycode);
-	(void)vars;
-	return (1);
-}
+// int	key_release(int keycode, t_vars *vars)
+// {
+// 	printf("key release:%d\n", keycode);
+// 	(void)vars;
+// 	return (1);
+// }
 
 // int	main(void)
 // {
@@ -53,35 +58,75 @@ int	key_release(int keycode, t_vars *vars)
 // 	mlx_loop(vars.mlx);
 // }
 
-typedef struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+// void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+// {
+// 	char	*dst;
+
+// 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+// 	*(unsigned int*)dst = color;
+// }
+
+// int	main(void)
+// {
+// 	t_data	img;
+// 	t_vars	vars;
+
+// 	vars.mlx = mlx_init();
+// 	vars.win = mlx_new_window(vars.mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Hello world!");
+// 	img.img = mlx_new_image(vars.mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
+// 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+// 								&img.endian);
+// 	my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
+// 	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
+// 	mlx_hook(vars.win, 2, 1L<<0, mlx_close, &vars);
+// 	mlx_loop(vars.mlx);
+// }
+
+
+int	handle_keypress(int keysym, t_data *data)
 {
-	char	*dst;
+	if (keysym == XK_Escape)
+	{
+		mlx_destroy_window(data->mlx, data->win);
+		data->win = NULL;
+	}
+	return (0);
+}
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+int	render(t_data *data)
+{
+	if (data->win == NULL)
+		return (1);
+	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+	mlx_put_image_to_window(data->mlx, data->win, data->img, 64, 0);
+	return (0);
 }
 
 int	main(void)
 {
-	 
-	t_data	img;
-	t_vars	vars;
+	t_data	data;
+	int		img_width;
+	int		img_height;
 
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
-	img.img = mlx_new_image(vars.mlx, 1920, 1080);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-								&img.endian);
-	my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
-	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
-	mlx_hook(vars.win, 2, 1L<<0, mlx_close, &vars);
-	mlx_loop(vars.mlx);
+	data.mlx = mlx_init();
+	if (data.mlx == NULL)
+		return (MLX_ERROR);
+	data.win = mlx_new_window(data.mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "so_long");
+	if (data.win == NULL)
+	{
+		free(data.win);
+		return (MLX_ERROR);
+	}
+
+	data.img = mlx_xpm_file_to_image(data.mlx, "/mnt/nfs/homes/tmanolis/Documents/So_long/assets/test.xpm", &img_width, &img_height);
+	mlx_loop_hook(data.mlx, &render, &data);
+	mlx_hook(data.win, KeyPress, KeyPressMask, &handle_keypress, &data);
+
+	mlx_loop(data.mlx);
+
+	/* we will exit the loop if there's no window left, and execute this code */
+	mlx_destroy_image(data.mlx, data.img);
+	mlx_destroy_display(data.mlx);
+	free(data.mlx);
 }
