@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:00:04 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/08 18:47:11 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/09 12:14:23 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,16 +98,14 @@ int	render(t_data *data)
 {
 	if (data->win == NULL)
 		return (1);
-	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-	mlx_put_image_to_window(data->mlx, data->win, data->img, 64, 0);
+	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
+	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 64, 0);
 	return (0);
 }
 
 int	main(void)
 {
 	t_data	data;
-	int		img_width;
-	int		img_height;
 
 	data.mlx = mlx_init();
 	if (data.mlx == NULL)
@@ -119,14 +117,14 @@ int	main(void)
 		return (MLX_ERROR);
 	}
 
-	data.img = mlx_xpm_file_to_image(data.mlx, "/mnt/nfs/homes/tmanolis/Documents/So_long/assets/test.xpm", &img_width, &img_height);
+	data.img.img = mlx_xpm_file_to_image(data.mlx, "/mnt/nfs/homes/tmanolis/Documents/So_long/assets/test.xpm", &data.img.width, &data.img.height);
 	mlx_loop_hook(data.mlx, &render, &data);
 	mlx_hook(data.win, KeyPress, KeyPressMask, &handle_keypress, &data);
 
 	mlx_loop(data.mlx);
 
 	/* we will exit the loop if there's no window left, and execute this code */
-	mlx_destroy_image(data.mlx, data.img);
+	mlx_destroy_image(data.mlx, data.img.img);
 	mlx_destroy_display(data.mlx);
 	free(data.mlx);
 }

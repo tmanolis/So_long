@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 15:31:04 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/08 18:47:06 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/09 12:14:05 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,33 +33,21 @@
 # define GREEN_PIXEL 0xFF00
 # define WHITE_PIXEL 0xFFFFFF
 
-// typedef struct	s_vars {
-// 	void	*mlx;
-// 	void	*win;
-// }				t_vars;
 
-// typedef struct	s_data {
-// 	void	*img;
-// 	char	*addr;
-// 	int		bits_per_pixel;
-// 	int		line_length;
-// 	int		endian;
-// }				t_data;
+typedef struct	s_img
+{
+	void	*img;
+	int		width;
+	int		height;
+}				t_img;
 
 typedef struct	s_data
 {
 	void	*mlx;
 	void	*win;
-	void	*img;
+	t_img	img;
 }				t_data;
 
-typedef struct	s_img
-{
-	int	x;
-	int	y;
-	int width;
-	int height;
-	int color;
-}				t_rect;
+
 
 #endif
