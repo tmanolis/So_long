@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 15:31:04 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/09 17:42:05 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/09 19:17:50 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SO_LONG_H
 
 # include "../Libft/libft.h"
+# include "get_next_line.h"
 # include "../../mlx_linux/mlx.h"
 # include <unistd.h>
 # include <limits.h>
@@ -47,24 +48,26 @@ typedef struct	s_img
 typedef struct	s_map
 {
 	char	*map_path;
-	int		fd;
 	int		nb_line;
+	int		nb_column;
 }				t_map;
 
 typedef struct	s_data
 {
 	void	*mlx;
 	void	*win;
+	char	**map_array;
 	t_img	img;
 	t_map	map;
 }				t_data;
 
 // GET_MAP --- get_the_map
-int	get_the_map(int argc, char **argv, t_data *data);
+int		get_the_map(int argc, char **argv, t_data *data);
 // GET_MAP --- init_map
-int	init_map(char *str, t_data *data);
+int		init_map(char *str, t_data *data);
 // UTILS --- errors_and_free
-int	print_error(char *str);
+int		print_error(char *str);
+void	free_map_array(char **map_array, int i);
 
 
 #endif

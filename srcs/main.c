@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:00:04 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/09 17:10:35 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/09 19:34:34 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,6 @@ int	main(int argc, char **argv)
 	mlx_destroy_image(data.mlx, data.img.img);
 	mlx_destroy_display(data.mlx);
 	free(data.mlx);
+
+	free_map_array(data.map_array, data.map.nb_line);
 }
