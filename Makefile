@@ -3,6 +3,7 @@
 SRCS_DIR = ./srcs/
 SRCS = main.c								\
 	get_map/get_the_map.c					\
+	get_map/init_map.c						\
 	gnl/get_next_line.c						\
 	gnl/get_next_line_utils.c				\
 	utils/errors_and_free.c					\

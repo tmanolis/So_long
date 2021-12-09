@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:00:04 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/09 14:27:49 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/09 17:10:35 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int argc, char **argv)
 {
 	t_data	data;
 
-	get_the_map(argc, argv);
+	get_the_map(argc, argv, &data);
 	data.mlx = mlx_init();
 	if (data.mlx == NULL)
 		return (MLX_ERROR);
