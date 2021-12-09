@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 15:31:04 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/09 12:14:05 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/09 14:40:56 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,10 @@ typedef struct	s_data
 	t_img	img;
 }				t_data;
 
+// GET_MAP --- get_the_map
+int	get_the_map(int argc, char **argv);
+// UTILS --- errors_and_free
+int	print_error(char *str);
 
 
 #endif
