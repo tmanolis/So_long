@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 15:31:04 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/13 16:27:01 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/13 17:30:14 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@
 
 typedef struct	s_img
 {
-	void	*img;
 	int		width;
 	int		height;
+	void	*img;
 }				t_img;
 
 typedef struct	s_map
@@ -50,6 +50,9 @@ typedef struct	s_map
 	char	*map_path;
 	int		nb_line;
 	int		nb_column;
+	int		player;
+	int		collectible;
+	int		exit;
 }				t_map;
 
 typedef struct	s_data
@@ -61,6 +64,8 @@ typedef struct	s_data
 	t_map	map;
 }				t_data;
 
+// GET_MAP --- check_map_errors
+int		check_map_error(t_data *data);
 // GET_MAP --- get_the_map
 int		get_the_map(int argc, char **argv, t_data *data);
 // GET_MAP --- init_map

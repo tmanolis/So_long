@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 13:56:35 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/13 15:25:26 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/13 19:47:45 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,25 +30,16 @@ int	is_it_a_ber_file(char *str)
 		return (FAILURE);
 }
 
-void	print_tab(t_data *data)
-{
-	int i;
-
-	i = 0;
-	while (i < data->map.nb_line)
-	{
-		printf("line du tableau : %s\n", data->map_array[i]);
-		i++;
-	}
-}
-
 int	parse_the_map(char *str, t_data *data)
 {
 
 	if (init_map(str, data) == FAILURE)
+		return (print_error("Couldn't initialize the map."));
+	if (check_map_error(data) == FAILURE)
+	{
+		free_map_array(data->map_array, (data->map.nb_line - 1));
 		return (FAILURE);
-	print_tab(data);
-	// if (check_map_error == SUCCESS) etc...
+	}
 	return (SUCCESS);
 }
 
@@ -59,6 +50,6 @@ int	get_the_map(int argc, char **argv, t_data *data)
 	if (is_it_a_ber_file(argv[1]) == FAILURE)
 		return (print_error("The map is not a file with .ber extension."));
 	if (parse_the_map(argv[1], data) == FAILURE)
-		return (print_error("The map is incorrect."));
+		return (FAILURE);
 	return (SUCCESS);
 }

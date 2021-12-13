@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 16:48:10 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/13 16:26:38 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/13 20:22:45 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	count_line(t_data *data)
 {
-	int 	nb_line;
-	int 	fd;
+	int		nb_line;
+	int		fd;
 	char	*line;
 
 	nb_line = 0;
@@ -23,7 +23,7 @@ int	count_line(t_data *data)
 	if (fd < 0)
 		return (FAILURE);
 	line = get_next_line(fd);
-	while(line)
+	while (line)
 	{
 		nb_line++;
 		free(line);
@@ -61,16 +61,16 @@ int	fill_line(t_data *data, char *line, int row)
 int	fill_the_map(t_data *data)
 {
 	int		row;
-	int 	fd;
+	int		fd;
 	char	*line;
-	
+
 	fd = open(data->map.map_path, O_RDONLY);
 	if (fd < 0)
 		return (FAILURE);
 	line = get_next_line(fd);
 	data->map.nb_column = ft_strlen(line) - 1;
 	row = 0;
-	while(line)
+	while (line)
 	{
 		if (fill_line(data, line, row) == FAILURE)
 			return (FAILURE);
