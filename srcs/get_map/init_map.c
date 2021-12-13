@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 16:48:10 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/09 19:36:10 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/13 16:26:38 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,25 @@ int	count_line(t_data *data)
 	return (nb_line);
 }
 
-int	fill_line(t_data *data, char *str, int row)
+int	fill_line(t_data *data, char *line, int row)
 {
 	int	i;
 	int	size;
 
 	i = 0;
-	size = ft_strlen(str) + 1;
-	data->map_array[row] = (char *)malloc(sizeof (char) * size);
+	if (ft_strchr(line, '\n'))
+		size = ft_strlen(line);
+	else
+		size = ft_strlen(line) + 1;
+	data->map_array[row] = (char *)malloc(sizeof(char) * size);
 	if (!data->map_array[row])
 	{
 		free_map_array(data->map_array, row);
 		return (FAILURE);
 	}
-	while (str[i])
+	while (line[i] != '\n' && line[i] != '\0')
 	{
-		data->map_array[row][i] = str[i];
+		data->map_array[row][i] = line[i];
 		i++;
 	}
 	data->map_array[row][i] = '\0';
@@ -65,7 +68,7 @@ int	fill_the_map(t_data *data)
 	if (fd < 0)
 		return (FAILURE);
 	line = get_next_line(fd);
-	data->map.nb_column = ft_strlen(line);
+	data->map.nb_column = ft_strlen(line) - 1;
 	row = 0;
 	while(line)
 	{
@@ -75,18 +78,21 @@ int	fill_the_map(t_data *data)
 		line = get_next_line(fd);
 		row++;
 	}
+	data->map_array[row] = NULL;
+	close(fd);
 	return (SUCCESS);
 }
 
-int	init_map(char *str, t_data *data)
+int	init_map(char *line, t_data *data)
 {
-
-	data->map.map_path = str;
+	data->map.map_path = line;
 	data->map.nb_line = count_line(data);
 	if (!data->map.nb_line)
 		return (FAILURE);
-	data->map_array = (char **)malloc(sizeof(char *) * (data->map.nb_line + 1));
+	data->map_array = (char **)malloc(sizeof(char *) * ((data->map.nb_line) + 1));
 	if (!data->map_array)
+		return (FAILURE);
+	if (fill_the_map(data) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }

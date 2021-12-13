@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 14:33:02 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/09 12:30:33 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/13 14:45:00 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ char	*copy_until_eol(char *stock)
 
 	i = 0;
 	while (stock[i] != '\n' && stock[i] != '\0')
-	{
 		i++;
-	}
 	if (stock[i] == '\n')
 		i++;
 	len = i;
