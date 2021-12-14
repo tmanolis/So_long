@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 13:09:56 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/14 16:20:36 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/14 19:53:22 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ int	render(t_data *data)
 		{
 			if (data->map_array[i][j] == '1')
 				mlx_put_image_to_window(data->mlx, data->win, data->img.wall, w, i * IMG_SIZE);
-			// else if (data->map_array[i][j] == '0')
-			// 	mlx_put_image_to_window(data->mlx, data->win, data->img.ground, w, i * IMG_SIZE);
-			// else if (data->map_array[i][j] == 'P')
-			// 	mlx_put_image_to_window(data->mlx, data->win, data->img.player, w, i * IMG_SIZE);
+			else if (data->map_array[i][j] == '0')
+				mlx_put_image_to_window(data->mlx, data->win, data->img.ground, w, i * IMG_SIZE);
+			else if (data->map_array[i][j] == 'P')
+				mlx_put_image_to_window(data->mlx, data->win, data->img.player, w, i * IMG_SIZE);
 			// else if (data->map_array[i][j] == 'C')
 			// 	mlx_put_image_to_window(data->mlx, data->win, data->img.exit, w, i * IMG_SIZE);
 			// else if (data->map_array[i][j] == 'E')

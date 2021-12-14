@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 15:31:04 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/14 16:27:49 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/14 19:18:02 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,14 @@ typedef struct	s_map
 	int		exit;
 }				t_map;
 
+typedef struct	s_player
+{
+	int		p_height;
+	int		p_width;
+	int		moves;
+	int		coin_collected;
+}				t_player;
+
 typedef struct	s_data
 {
 	void	*mlx;
@@ -67,8 +75,14 @@ typedef struct	s_data
 	char	**map_array;
 	t_img	img;
 	t_map	map;
+	t_player	player;
 }				t_data;
 
+// EVENTS --- handle
+int		handle_exit_button(t_data *data);
+int		handle_keypress(int keysym, t_data *data);
+// EVENTS --- move_player
+void	move_player(t_data *data, char keypress);
 // GET_MAP --- check_map_errors
 int		check_map_error(t_data *data);
 // GET_MAP --- get_the_map
@@ -82,6 +96,7 @@ int		render(t_data *data);
 // UTILS --- errors_and_free
 int		print_error(char *str);
 void	free_map_array(char **map_array, int i);
+void	endgame(t_data *data);
 
 
 #endif
