@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 13:56:35 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/13 19:47:45 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/14 12:29:12 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	is_it_a_ber_file(char *str)
 {
-	int fd;
+	int	fd;
 	int	ext_index;
 
 	fd = open(str, O_DIRECTORY);
@@ -32,7 +32,6 @@ int	is_it_a_ber_file(char *str)
 
 int	parse_the_map(char *str, t_data *data)
 {
-
 	if (init_map(str, data) == FAILURE)
 		return (print_error("Couldn't initialize the map."));
 	if (check_map_error(data) == FAILURE)

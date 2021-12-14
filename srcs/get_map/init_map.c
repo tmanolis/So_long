@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 16:48:10 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/13 20:22:45 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/14 13:40:29 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,12 @@ int	init_map(char *line, t_data *data)
 	data->map.nb_line = count_line(data);
 	if (!data->map.nb_line)
 		return (FAILURE);
-	data->map_array = (char **)malloc(sizeof(char *) * ((data->map.nb_line) + 1));
+	data->map_array = (char **)malloc(sizeof(char *) * (data->map.nb_line + 1));
 	if (!data->map_array)
 		return (FAILURE);
 	if (fill_the_map(data) == FAILURE)
 		return (FAILURE);
+	data->win_width = IMG_SIZE * data->map.nb_column;
+	data->win_height = IMG_SIZE * data->map.nb_line;
 	return (SUCCESS);
 }

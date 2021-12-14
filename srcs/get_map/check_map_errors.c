@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 16:34:56 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/13 20:20:15 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/14 12:37:52 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int	check_map_sides(t_data *data)
 			return (FAILURE);
 		i++;
 	}
-	i = data->map.nb_line - 1;
 	j = 0;
 	while (data->map_array[i][j])
 	{
@@ -93,7 +92,7 @@ int	check_params(t_data *data)
 	if (data->map.player != 1)
 		return (print_error("The map should have ONE player."));
 	else if (data->map.collectible < 1)
-		return (print_error("The map should have at least one collectible."));
+		return (print_error("The map needs at least one collectible."));
 	else if (data->map.exit != 1)
 		return (print_error("The map should have ONE exit."));
 	else

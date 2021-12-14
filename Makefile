@@ -7,6 +7,8 @@ SRCS = main.c								\
 	get_map/init_map.c						\
 	gnl/get_next_line.c						\
 	gnl/get_next_line_utils.c				\
+	graphics/get_images.c					\
+	graphics/render.c						\
 	utils/errors_and_free.c					\
 		
 OBJS = $(addprefix $(SRCS_DIR), $(SRCS:.c=.o))
