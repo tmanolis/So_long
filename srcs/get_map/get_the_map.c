@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 13:56:35 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/14 19:46:52 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/15 13:52:11 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	parse_the_map(char *str, t_data *data)
 	return (SUCCESS);
 }
 
-void	get_player_position(t_data *data)
+void	init_player_position(t_data *data)
 {
 	int i;
 	int j;
@@ -62,6 +62,8 @@ void	get_player_position(t_data *data)
 		}
 		i++;
 	}
+	data->player.moves = 0;
+	data->player.coin_collected = 0;
 }
 
 int	get_the_map(int argc, char **argv, t_data *data)
@@ -72,6 +74,6 @@ int	get_the_map(int argc, char **argv, t_data *data)
 		return (print_error("The map is not a file with .ber extension."));
 	if (parse_the_map(argv[1], data) == FAILURE)
 		return (FAILURE);
-	get_player_position(data);
+	init_player_position(data);
 	return (SUCCESS);
 }

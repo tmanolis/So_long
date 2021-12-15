@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 15:31:04 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/14 19:18:02 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/15 15:21:21 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,8 @@
 
 # define MLX_ERROR 1
 
-# define RED_PIXEL 0xFF0000
-# define GREEN_PIXEL 0xFF00
-# define WHITE_PIXEL 0xFFFFFF
+# define PEACH "\033[38;5;217m"
+# define RESET "\033[0m"
 
 
 typedef struct	s_img
@@ -78,6 +77,8 @@ typedef struct	s_data
 	t_player	player;
 }				t_data;
 
+// EVENTS --- check_before_moving
+int		is_exit_opened(t_data *data);
 // EVENTS --- handle
 int		handle_exit_button(t_data *data);
 int		handle_keypress(int keysym, t_data *data);
@@ -97,6 +98,8 @@ int		render(t_data *data);
 int		print_error(char *str);
 void	free_map_array(char **map_array, int i);
 void	endgame(t_data *data);
+// UTILS --- print_moves
+void	print_moves(t_data *data);
 
 
 #endif

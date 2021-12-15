@@ -2,6 +2,7 @@
 
 SRCS_DIR = ./srcs/
 SRCS = main.c								\
+	events/check_before_moving.c			\
 	events/handle.c							\
 	events/move_player.c					\
 	get_map/check_map_errors.c				\
@@ -12,6 +13,7 @@ SRCS = main.c								\
 	graphics/get_images.c					\
 	graphics/render.c						\
 	utils/errors_and_free.c					\
+	utils/print_moves.c						\
 		
 OBJS = $(addprefix $(SRCS_DIR), $(SRCS:.c=.o))
 
