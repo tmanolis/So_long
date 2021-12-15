@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 15:31:04 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/15 15:21:21 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/15 18:06:04 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 
 # define MLX_ERROR 1
 
-# define PEACH "\033[38;5;217m"
+# define MAUVE "\033[38;5;98m"
 # define RESET "\033[0m"
 
 
@@ -100,6 +100,5 @@ void	free_map_array(char **map_array, int i);
 void	endgame(t_data *data);
 // UTILS --- print_moves
 void	print_moves(t_data *data);
-
 
 #endif

@@ -6,20 +6,11 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 13:09:56 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/15 13:48:30 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/15 18:05:27 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-// int	render(t_data *data)
-// {
-// 	if (data->win == NULL)
-// 		return (FAILURE);
-// 	mlx_put_image_to_window(data->mlx, data->win, data->img.ground, 0, 0);
-// 	mlx_put_image_to_window(data->mlx, data->win, data->img.ground, 64, 0);
-// 	return (SUCCESS);
-// }
 
 int	render(t_data *data)
 {
