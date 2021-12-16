@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 15:31:04 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/16 17:58:16 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/16 18:58:31 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct	s_img
 	void	*player;
 	void	*collectible;
 	void	*exit;
+	char	*display_moves;
 }				t_img;
 
 typedef struct	s_map
