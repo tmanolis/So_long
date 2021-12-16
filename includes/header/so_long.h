@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 15:31:04 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/16 16:11:13 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/16 17:58:16 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,14 @@ typedef struct	s_img
 {
 	int		width;
 	int		height;
-	void	*wall;
 	void	*wall_top;
+	void	*wall_down;
+	void	*wall_left;
+	void	*wall_right;
+	void	*wall_l_d_c;
+	void	*wall_l_t_c;
+	void	*wall_r_t_c;
+	void	*wall_r_d_c;
 	void	*ground;
 	void	*player;
 	void	*collectible;

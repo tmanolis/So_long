@@ -25,6 +25,7 @@ MFLAGS = -ldl -lmlx -Lmlx_linux -lm -lXext -lX11 -Imlx mlx_linux/libmlx.a
 # *--------- includes ---------* 
 
 INCLUDES_DIR = -I ./includes/header
+INC = ./includes/header/so_long.h
 
 # *--------- Libft ---------* 
 
@@ -49,7 +50,7 @@ all:		$(NAME)
 %.o : %.c
 	$(CC) $(CFLAGS) -o $@ -c $< $(INCLUDES_DIR) 
 
-$(NAME):	$(OBJS)
+$(NAME):	$(OBJS) $(INC)
 			make -C $(MLX_DIR)
 			make -C $(LIBFT_DIR)
 	        $(CC) $(CFLAGS) $(OBJS) $(LIBFT_FLAGS) $(INCLUDES_DIR) -o $(NAME) $(MFLAGS)
