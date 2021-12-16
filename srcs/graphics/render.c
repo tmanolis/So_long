@@ -6,11 +6,21 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 13:09:56 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/15 18:05:27 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/16 15:56:34 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	render_wall(t_data *data, int i, int j, int w)
+{
+	(void)j;
+	if (i == 0 && (j > 0 && j < (data->map.nb_column - 1)))
+		mlx_put_image_to_window(data->mlx, data->win, data->img.wall_top, w, i * IMG_SIZE);
+	else
+		mlx_put_image_to_window(data->mlx, data->win, data->img.wall, w, i * IMG_SIZE);
+	
+}
 
 int	render(t_data *data)
 {
@@ -27,8 +37,10 @@ int	render(t_data *data)
 	{
 		while (data->map_array[i][j] != '\0')
 		{
+			// if (data->map_array[i][j] == '1')
+			// 	mlx_put_image_to_window(data->mlx, data->win, data->img.wall, w, i * IMG_SIZE);
 			if (data->map_array[i][j] == '1')
-				mlx_put_image_to_window(data->mlx, data->win, data->img.wall, w, i * IMG_SIZE);
+				render_wall(data, i, j, w);
 			else if (data->map_array[i][j] == '0')
 				mlx_put_image_to_window(data->mlx, data->win, data->img.ground, w, i * IMG_SIZE);
 			else if (data->map_array[i][j] == 'P')

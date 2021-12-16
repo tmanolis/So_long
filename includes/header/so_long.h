@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 15:31:04 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/15 18:06:04 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/16 16:11:13 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define SUCCESS 1
 # define FAILURE 0
 
-# define IMG_SIZE 48
+# define IMG_SIZE 75
 
 # define MLX_ERROR 1
 
@@ -41,6 +41,7 @@ typedef struct	s_img
 	int		width;
 	int		height;
 	void	*wall;
+	void	*wall_top;
 	void	*ground;
 	void	*player;
 	void	*collectible;
