@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 13:56:35 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/15 15:38:17 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/17 13:25:47 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ int	parse_the_map(char *str, t_data *data)
 
 void	init_player_position(t_data *data)
 {
-	int i;
-	int j;
-	
+	int	i;
+	int	j;
+
 	i = 0;
 	while (data->map_array[i])
 	{

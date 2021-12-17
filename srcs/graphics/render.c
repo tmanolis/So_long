@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 13:09:56 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/16 19:03:24 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/17 13:44:32 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,19 @@ void	render_wall(t_data *data, int i, int j, int w)
 		i * IMG_SIZE);
 }
 
+void	display_counter(t_data *data)
+{
+	mlx_string_put(data->mlx, data->win, 15, 35, 231, "Counter:");
+	data->img.display_moves = ft_itoa(data->player.moves);
+	mlx_string_put(data->mlx, data->win, 80, 35, 231, data->img.display_moves);
+	free(data->img.display_moves);
+}
+
 int	render(t_data *data)
 {
-	int 	i;
-	int 	j;
-	int		w;
+	int	i;
+	int	j;
+	int	w;
 
 	i = 0;
 	j = 0;
@@ -73,9 +81,6 @@ int	render(t_data *data)
 		w = 0;
 		i++;
 	}
-	mlx_string_put(data->mlx, data->win, 15, 35, 231, "Counter:");
-	data->img.display_moves = ft_itoa(data->player.moves);
-    mlx_string_put(data->mlx, data->win, 80, 35, 231, data->img.display_moves);
-	free(data->img.display_moves);
+	display_counter(data);
 	return (SUCCESS);
 }

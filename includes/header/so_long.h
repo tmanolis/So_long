@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 15:31:04 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/16 18:58:31 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/17 13:22:36 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@
 # define MAUVE "\033[38;5;98m"
 # define RESET "\033[0m"
 
-
-typedef struct	s_img
+typedef struct s_img
 {
 	int		width;
 	int		height;
@@ -55,7 +54,7 @@ typedef struct	s_img
 	char	*display_moves;
 }				t_img;
 
-typedef struct	s_map
+typedef struct s_map
 {
 	char	*map_path;
 	int		nb_line;
@@ -65,7 +64,7 @@ typedef struct	s_map
 	int		exit;
 }				t_map;
 
-typedef struct	s_player
+typedef struct s_player
 {
 	int		p_height;
 	int		p_width;
@@ -73,15 +72,15 @@ typedef struct	s_player
 	int		coin_collected;
 }				t_player;
 
-typedef struct	s_data
+typedef struct s_data
 {
-	void	*mlx;
-	void	*win;
-	int		win_width;
-	int		win_height;
-	char	**map_array;
-	t_img	img;
-	t_map	map;
+	void		*mlx;
+	void		*win;
+	int			win_width;
+	int			win_height;
+	char		**map_array;
+	t_img		img;
+	t_map		map;
 	t_player	player;
 }				t_data;
 

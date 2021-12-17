@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 11:44:44 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/15 16:29:55 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/17 13:25:02 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	is_exit_opened(t_data *data)
 {
-	int i;
+	int	i;
 	int	j;
 
 	i = data->player.p_height;

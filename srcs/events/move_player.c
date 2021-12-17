@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 18:35:09 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/15 15:21:54 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/17 13:24:43 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	move_up(t_data *data)
 {
-	int i;
+	int	i;
 	int	j;
 
 	i = data->player.p_height;
@@ -37,7 +37,7 @@ void	move_up(t_data *data)
 
 void	move_down(t_data *data)
 {
-	int i;
+	int	i;
 	int	j;
 
 	i = data->player.p_height;
@@ -60,7 +60,7 @@ void	move_down(t_data *data)
 
 void	move_left(t_data *data)
 {
-	int i;
+	int	i;
 	int	j;
 
 	i = data->player.p_height;
@@ -83,7 +83,7 @@ void	move_left(t_data *data)
 
 void	move_right(t_data *data)
 {
-	int i;
+	int	i;
 	int	j;
 
 	i = data->player.p_height;
