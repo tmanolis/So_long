@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 16:34:56 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/17 13:27:35 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/17 14:13:14 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,36 +24,6 @@ int	check_map_is_a_rectangle(t_data *data)
 		if ((int)ft_strlen(data->map_array[i]) != data->map.nb_column)
 			return (print_error("The map is not a rectangle."));
 		i++;
-	}
-	return (SUCCESS);
-}
-
-int	check_map_sides(t_data *data)
-{
-	int	i;
-	int	j;
-
-	j = 0;
-	while (data->map_array[0][j])
-	{
-		if (data->map_array[0][j] != '1')
-			return (FAILURE);
-		j++;
-	}
-	i = 1;
-	j = data->map.nb_column - 1;
-	while (i < (data->map.nb_line - 1))
-	{
-		if (data->map_array[i][0] != '1' || data->map_array[i][j] != '1')
-			return (FAILURE);
-		i++;
-	}
-	j = 0;
-	while (data->map_array[i][j])
-	{
-		if (data->map_array[i][j] != '1')
-			return (FAILURE);
-		j++;
 	}
 	return (SUCCESS);
 }

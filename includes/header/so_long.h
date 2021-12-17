@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 15:31:04 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/17 13:22:36 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/17 14:15:10 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ int		handle_keypress(int keysym, t_data *data);
 void	move_player(t_data *data, char keypress);
 // GET_MAP --- check_map_errors
 int		check_map_error(t_data *data);
+// GET_MAP --- check_map_sides_errors
+int		check_map_sides(t_data *data);
 // GET_MAP --- get_the_map
 int		get_the_map(int argc, char **argv, t_data *data);
 // GET_MAP --- init_map

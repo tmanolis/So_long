@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 13:09:56 by tmanolis          #+#    #+#             */
-/*   Updated: 2021/12/17 13:44:32 by tmanolis         ###   ########.fr       */
+/*   Updated: 2021/12/17 14:18:52 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,24 @@ void	render_wall(t_data *data, int i, int j, int w)
 		i * IMG_SIZE);
 }
 
+void	parsing_display(t_data *data, int i, int j, int w)
+{
+	if (data->map_array[i][j] == '1')
+		render_wall(data, i, j, w);
+	else if (data->map_array[i][j] == '0')
+		mlx_put_image_to_window(data->mlx, \
+		data->win, data->img.ground, w, i * IMG_SIZE);
+	else if (data->map_array[i][j] == 'P')
+		mlx_put_image_to_window(data->mlx, \
+		data->win, data->img.player, w, i * IMG_SIZE);
+	else if (data->map_array[i][j] == 'C')
+		mlx_put_image_to_window(data->mlx, \
+		data->win, data->img.collectible, w, i * IMG_SIZE);
+	else if (data->map_array[i][j] == 'E')
+		mlx_put_image_to_window(data->mlx, \
+		data->win, data->img.exit, w, i * IMG_SIZE);
+}
+
 void	display_counter(t_data *data)
 {
 	mlx_string_put(data->mlx, data->win, 15, 35, 231, "Counter:");
@@ -64,16 +82,7 @@ int	render(t_data *data)
 	{
 		while (data->map_array[i][j] != '\0')
 		{
-			if (data->map_array[i][j] == '1')
-				render_wall(data, i, j, w);
-			else if (data->map_array[i][j] == '0')
-				mlx_put_image_to_window(data->mlx, data->win, data->img.ground, w, i * IMG_SIZE);
-			else if (data->map_array[i][j] == 'P')
-				mlx_put_image_to_window(data->mlx, data->win, data->img.player, w, i * IMG_SIZE);
-			else if (data->map_array[i][j] == 'C')
-				mlx_put_image_to_window(data->mlx, data->win, data->img.collectible, w, i * IMG_SIZE);
-			else if (data->map_array[i][j] == 'E')
-				mlx_put_image_to_window(data->mlx, data->win, data->img.exit, w, i * IMG_SIZE);
+			parsing_display(data, i, j, w);
 			w = w + IMG_SIZE;
 			j++;
 		}
